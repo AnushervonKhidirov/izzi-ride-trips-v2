@@ -32,15 +32,20 @@ export const logIn = async (data: TLogInData): ResponseWithError<TTokens> => {
     }
 }
 
-export const getUser = async (): ResponseWithError<TUser> => {
+export const getUser = async (cookieStore?: ReadonlyRequestCookies): ResponseWithError<TUser> => {
     try {
-        const cookies = getCookies()
-        if (!cookies.access_token) throw new Error()
+        let accessToken: string | undefined
 
-        const response = await fetch(Endpoint.LogIn, {
+        if (cookieStore) {
+            accessToken = cookieStore.get(Token.Access)?.value
+        } else {
+            const cookies = getCookies()
+            accessToken = cookies.access_token
+        }
+
+        const response = await fetch(Endpoint.UserInfo, {
             headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${cookies.access_token}`,
+                Authorization: `Bearer ${accessToken}`,
             },
         })
 
@@ -50,6 +55,7 @@ export const getUser = async (): ResponseWithError<TUser> => {
 
         const responseBody = <TResponse<TUser>>await response.json()
         const user = responseBody.data
+
         if (!user) throw new Error('')
 
         return [user, null]

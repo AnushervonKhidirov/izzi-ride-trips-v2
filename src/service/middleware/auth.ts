@@ -13,7 +13,7 @@ export function authMiddleware(nextMiddleware: NextMiddleware): NextMiddleware {
         const refresh_token = cookieStore.get(Token.Refresh)?.value
 
         if (access_token && refresh_token) {
-            const [user, err] = await requestWithRefresh(getUser)
+            const [user, err] = await requestWithRefresh(() => getUser(cookieStore), cookieStore)
 
             if (!err) request.headers.set(Headers.User, JSON.stringify(user))
         }

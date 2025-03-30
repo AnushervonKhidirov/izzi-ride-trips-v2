@@ -33,8 +33,11 @@ const LogIn = () => {
 
         if (err) {
             alert(err.error)
+            console.log('if');
         } else {
             addCookies(tokens)
+            console.log('else');
+            
             router.push('/')
         }
     }
