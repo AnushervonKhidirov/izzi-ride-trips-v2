@@ -1,9 +1,8 @@
 import { Endpoint, Token } from '@constant/request';
 import { getCookies } from '@helper/cookies.helper';
 import { TUser } from '@type/auth.type';
-import { ResponseWithError } from '@type/common.type';
+import { ResponseWithError, TResponse } from '@type/common.type';
 import { CustomError } from '@type/error.type';
-import { TResponse } from '@type/form.type';
 import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 
 export class UserService {

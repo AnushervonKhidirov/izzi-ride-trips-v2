@@ -35,9 +35,4 @@ export type TDefaultFormElementData = {
 
 export type TDefaultValue = string | number | boolean | TAutocompleteOption;
 
-export type TResponse<T = {}> = {
-  code: number;
-  show_custom_message: boolean;
-  message: string;
-  data?: T;
-};
+

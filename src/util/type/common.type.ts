@@ -19,3 +19,10 @@ export type TChip = {
 export type TStyles = HTMLAttributes<HTMLElement>['style'];
 
 export type ResponseWithError<T = {}> = Promise<[T, null] | [null, CustomError]>;
+
+export type TResponse<T = {}> = {
+  code: number;
+  show_custom_message: boolean;
+  message: string;
+  data?: T;
+};

@@ -1,6 +1,6 @@
 .section {
-    display: grid;
-    height: 100%;
-    grid-template-rows: max-content 1fr;
-    gap: 3rem;
+  display: grid;
+  height: 100%;
+  grid-template-rows: max-content 1fr;
+  gap: 3rem;
 }

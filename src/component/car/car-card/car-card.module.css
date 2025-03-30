@@ -1,0 +1,68 @@
+.car_card {
+  display: grid;
+  grid-auto-rows: max-content;
+  gap: 1.5rem;
+}
+
+.image {
+  width: 100%;
+  grid-area: image;
+  background-color: var(--light);
+  object-fit: contain;
+  object-position: center;
+  padding: 2rem;
+}
+
+.about {
+  grid-area: about;
+}
+
+.preferences {
+  display: flex;
+  grid-area: preferences;
+  align-self: self-end;
+  font-size: 1em;
+  flex-wrap: wrap;
+}
+
+.action_buttons {
+  display: grid;
+  grid-area: btn;
+  gap: 1rem;
+}
+
+.properties li {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.color {
+  width: 2em;
+  height: 80%;
+  border-radius: 0.2em;
+}
+
+@media screen and (min-width: 426px) {
+  .car_card {
+    grid-template-areas: 'image' 'about' 'preferences' 'btn';
+    grid-template-rows: max-content max-content 1fr max-content;
+  }
+
+  .image {
+    height: auto;
+    aspect-ratio: 2/1.25;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .car_card {
+    grid-template-areas: 'image about' 'image preferences' 'image btn';
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .image {
+    height: 100%;
+  }
+}

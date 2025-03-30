@@ -1,8 +1,7 @@
 import { Endpoint } from '@constant/request';
 import { TLogInData, TTokens } from '@type/auth.type';
-import { ResponseWithError } from '@type/common.type';
+import { ResponseWithError, TResponse } from '@type/common.type';
 import { CustomError } from '@type/error.type';
-import { TResponse } from '@type/form.type';
 
 export class AuthService {
   async logIn(data: TLogInData): ResponseWithError<TTokens> {

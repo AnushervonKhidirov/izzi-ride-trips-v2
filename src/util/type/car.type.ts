@@ -1,8 +1,8 @@
 import type { StaticImageData } from 'next/image';
-import type { TProperty } from './common.type';
+import type { TProperty, TResponse } from './common.type';
 import type { ErrorCustom } from './error.type';
 import type { TNavigationData } from './navigation.type';
-import type { TAutocompleteOption, TEditableField, TFormElement, TResponse } from './form.type';
+import type { TAutocompleteOption, TEditableField, TFormElement } from './form.type';
 
 // Cars
 export interface ICars {
