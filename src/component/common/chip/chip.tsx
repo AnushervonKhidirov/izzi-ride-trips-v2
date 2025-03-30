@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { TChip } from '@type/common'
+import { TChip } from '@type/common.type'
 
 import classNames from 'classnames'
 import classes from './chip.module.css'

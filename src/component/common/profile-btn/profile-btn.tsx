@@ -1,6 +1,6 @@
 import type { FC } from 'react'
-import type { TUser } from '@type/auth'
-import type { AdditionalProps } from '@type/common'
+import type { TUser } from '@type/auth.type'
+import type { AdditionalProps } from '@type/common.type'
 
 import Link from 'next/link'
 import { AccountCircle } from '@mui/icons-material'

@@ -1,4 +1,4 @@
-import { TNavigationData } from '@type/navigation'
+import { TNavigationData } from '@type/navigation.type'
 
 import { Page } from '@constant/links'
 

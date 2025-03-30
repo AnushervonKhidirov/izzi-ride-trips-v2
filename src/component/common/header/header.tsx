@@ -1,4 +1,4 @@
-import type { TUser } from '@type/auth'
+import type { TUser } from '@type/auth.type'
 
 import { headers } from 'next/headers'
 

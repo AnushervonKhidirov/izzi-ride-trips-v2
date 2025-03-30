@@ -1,6 +1,6 @@
 'use client'
 import type { FC } from 'react'
-import type { TEditableField } from '@type/form'
+import type { TEditableField } from '@type/form.type'
 
 import { useState } from 'react'
 

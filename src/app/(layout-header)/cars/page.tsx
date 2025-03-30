@@ -1,5 +1,5 @@
 const CarsPage = () => {
-    return <div>cars</div>
-}
+  return <div>cars</div>;
+};
 
-export default CarsPage
+export default CarsPage;

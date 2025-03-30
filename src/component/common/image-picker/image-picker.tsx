@@ -1,6 +1,6 @@
 import type { FC, ChangeEvent } from 'react'
 import type { TextFieldProps } from '@mui/material'
-import type { AdditionalProps } from '@type/common'
+import type { AdditionalProps } from '@type/common.type'
 
 import { useRef, useState } from 'react'
 

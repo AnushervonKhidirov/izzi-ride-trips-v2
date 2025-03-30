@@ -1,5 +1,5 @@
 import type { FC, ElementType } from 'react'
-import type { AdditionalProps, TStyles } from '@type/common'
+import type { AdditionalProps, TStyles } from '@type/common.type'
 
 import { Card as MuiCard } from '@mui/material'
 

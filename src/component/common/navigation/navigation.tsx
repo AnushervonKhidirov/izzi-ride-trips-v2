@@ -1,6 +1,6 @@
 'use client'
 import type { FC } from 'react'
-import type { TNavigationData } from '@type/navigation'
+import type { TNavigationData } from '@type/navigation.type'
 
 import { usePathname } from 'next/navigation'
 

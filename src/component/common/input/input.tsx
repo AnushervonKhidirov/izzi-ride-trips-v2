@@ -1,6 +1,6 @@
 import type { ChangeEvent, FC, MouseEvent, ReactNode } from 'react'
 import type { OutlinedInputProps } from '@mui/material'
-import type { TAutocompleteOption, TFormElement } from '@type/form'
+import type { TAutocompleteOption, TFormElement } from '@type/form.type'
 
 import { useRef, useState } from 'react'
 import {

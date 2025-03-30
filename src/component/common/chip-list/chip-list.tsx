@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import type { AdditionalProps, TChip } from '@type/common'
+import type { AdditionalProps, TChip } from '@type/common.type'
 
 import Chip from '@common/chip/chip'
 

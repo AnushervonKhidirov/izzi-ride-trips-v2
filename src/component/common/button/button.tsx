@@ -1,6 +1,6 @@
 import type { FC, HTMLAttributeAnchorTarget } from 'react'
 import type { TooltipProps } from '@mui/material'
-import type { AdditionalProps, TStyles } from '@type/common'
+import type { AdditionalProps, TStyles } from '@type/common.type'
 
 import { CircularProgress, Button as MuiButton } from '@mui/material'
 import { LoadingButton } from '@mui/lab'

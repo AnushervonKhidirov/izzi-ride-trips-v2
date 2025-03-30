@@ -1,4 +1,4 @@
-import type { TCarType } from '@type/car'
+import type { TCarType } from '@type/car.type'
 
 export const carTypes: TCarType[] = [
     'Off-road vehicles',

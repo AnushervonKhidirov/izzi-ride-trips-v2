@@ -1,5 +1,5 @@
 const TripsPage = () => {
-    return <div>trips</div>
-}
+  return <div>trips</div>;
+};
 
-export default TripsPage
+export default TripsPage;

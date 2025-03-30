@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { AdditionalProps } from '@type/common'
+import { AdditionalProps } from '@type/common.type'
 
 import classNames from 'classnames'
 import classes from './section.module.css'
