@@ -25,19 +25,12 @@ const LogIn = () => {
 
         const [tokens, err] = await logIn(body)
 
-        console.log(err);
-        console.log(tokens);
-        
-
         setLoading(false)
 
         if (err) {
             alert(err.error)
-            console.log('if');
         } else {
             addCookies(tokens)
-            console.log('else');
-            
             router.push('/')
         }
     }
