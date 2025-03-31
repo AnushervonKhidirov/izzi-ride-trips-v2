@@ -1,9 +1,11 @@
 'use client';
+import type { TCar } from '@type/car.type';
+import type { TStyles } from '@type/common.type';
 
 import { useEffect, useState } from 'react';
+import { useSnackbar } from 'notistack';
+import Alert from '@common/alert/alert';
 import { CarService } from '@service/car/car.service';
-import { TCar } from '@type/car.type';
-import { TStyles } from '@type/common.type';
 import Section from '@common/section/section';
 import CarList from '@component/car/car-list/car-list';
 import { Button } from '@common/button/button';
@@ -14,10 +16,16 @@ const CarsPage = () => {
   const carService = new CarService();
 
   const [carList, setCarList] = useState<TCar[]>([]);
+  const { enqueueSnackbar } = useSnackbar();
 
   async function getData() {
     const [data, err] = await requestWithRefresh<TCar[]>(carService.getCars);
-    if (err) return;
+    if (err) {
+      return enqueueSnackbar(
+        <Alert title={err.error ? `${err.status} | ${err.message}` : ''} message={err.message} />,
+        { variant: 'error' },
+      );
+    }
     setCarList(data);
   }
 
