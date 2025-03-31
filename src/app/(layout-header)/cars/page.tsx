@@ -20,12 +20,13 @@ const CarsPage = () => {
 
   async function getData() {
     const [data, err] = await requestWithRefresh<TCar[]>(carService.getCars);
+
     if (err) {
-      return enqueueSnackbar(
-        <Alert title={err.error ? `${err.status} | ${err.message}` : ''} message={err.message} />,
-        { variant: 'error' },
-      );
+      return enqueueSnackbar(<Alert status={err.status} title={err.error} message={err.message} />, {
+        variant: 'error',
+      });
     }
+
     setCarList(data);
   }
 
