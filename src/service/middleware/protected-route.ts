@@ -1,5 +1,5 @@
 import type { NextMiddleware } from 'next/server';
-import type { TUser } from '@type/auth.type';
+import type { TUser } from '@type/user.type';
 import { NextResponse } from 'next/server';
 import { Page } from '@constant/links';
 import { Headers } from '@constant/headers';
