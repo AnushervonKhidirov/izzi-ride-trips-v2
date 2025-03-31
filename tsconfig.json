@@ -30,6 +30,7 @@
             "@service/*": ["./src/service/*"],
             "@constant/*": ["./src/util/constant/*"],
             "@helper/*": ["./src/util/helper/*"],
+            "@error/*": ["./src/util/error/*"],
             "@type/*": ["./src/util/type/*"],
             "@api/*": ["./src/api/*"],
             "@/*": ["./src/*"]
