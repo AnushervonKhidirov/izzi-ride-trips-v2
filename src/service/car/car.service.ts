@@ -1,14 +1,13 @@
 import type { ResponseWithError, TResponse } from '@type/common.type';
 import type { TCar } from '@type/car.type';
 import { HttpError, SimpleError } from '@error/http.error';
-import { Endpoint } from '@constant/request';
+import { Endpoint, Token } from '@constant/request';
 import { getCookies } from '@helper/cookies.helper';
 
 export class CarService {
   async getCars(): ResponseWithError<TCar[]> {
     try {
-      const cookies = getCookies();
-      const accessToken = cookies.access_token;
+      const accessToken = getCookies(Token.Access);
 
       const response = await fetch(Endpoint.Cars, {
         headers: {

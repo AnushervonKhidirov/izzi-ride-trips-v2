@@ -9,14 +9,7 @@ import { HttpError, SimpleError } from '@error/http.error';
 export class UserService {
   async getUser(cookieStore?: ReadonlyRequestCookies): ResponseWithError<TUser> {
     try {
-      let accessToken: string | undefined;
-
-      if (cookieStore) {
-        accessToken = cookieStore.get(Token.Access)?.value;
-      } else {
-        const cookies = getCookies();
-        accessToken = cookies.access_token;
-      }
+      const accessToken = cookieStore ? cookieStore.get(Token.Access)?.value : getCookies(Token.Access);
 
       const response = await fetch(Endpoint.UserInfo, {
         headers: {

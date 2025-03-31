@@ -8,7 +8,7 @@ export function addCookies(data: TCookieData) {
   }
 }
 
-export function getCookies() {
+export function getCookies<T>(key?: T): T extends string ? string | undefined : TCookieData {
   const keyValue = document.cookie.split(';');
   const cookies: TCookieData = {};
 
@@ -19,5 +19,5 @@ export function getCookies() {
     cookies[key] = value;
   });
 
-  return cookies;
+  return typeof key === 'string' ? (cookies[key] as any) : (cookies as any);
 }

@@ -16,15 +16,7 @@ export const requestWithRefresh = async <T>(
     if (err) {
       if (err.status === parseInt(Token.ExpiredCode)) {
         const authService = new AuthService();
-        let tokenRefresh: string | undefined;
-
-        if (cookieStore) {
-          tokenRefresh = cookieStore.get(Token.Refresh)?.value;
-        } else {
-          const cookies = getCookies();
-          tokenRefresh = cookies.refresh_token;
-        }
-
+        const tokenRefresh = cookieStore ? cookieStore.get(Token.Refresh)?.value : getCookies(Token.Refresh);
         if (!tokenRefresh) throw new Error();
 
         const [tokens, err] = await authService.refreshToken(tokenRefresh);
