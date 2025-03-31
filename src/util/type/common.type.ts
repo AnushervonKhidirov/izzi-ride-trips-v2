@@ -1,5 +1,5 @@
 import type { HTMLAttributes, PropsWithChildren } from 'react';
-import { CustomError } from './error.type';
+import { HttpError } from '@error/http.error';
 
 export type AdditionalProps<T = {}> = T &
   PropsWithChildren & {
@@ -18,7 +18,7 @@ export type TChip = {
 
 export type TStyles = HTMLAttributes<HTMLElement>['style'];
 
-export type ResponseWithError<T = {}> = Promise<[T, null] | [null, CustomError]>;
+export type ResponseWithError<T = {}> = Promise<[T, null] | [null, HttpError]>;
 
 export type TResponse<T = {}> = {
   code: number;

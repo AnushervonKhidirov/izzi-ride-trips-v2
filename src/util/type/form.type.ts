@@ -34,5 +34,3 @@ export type TDefaultFormElementData = {
 };
 
 export type TDefaultValue = string | number | boolean | TAutocompleteOption;
-
-

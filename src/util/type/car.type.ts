@@ -1,40 +1,4 @@
-import type { StaticImageData } from 'next/image';
-import type { TProperty, TResponse } from './common.type';
-import type { ErrorCustom } from './error.type';
-import type { TNavigationData } from './navigation.type';
-import type { TAutocompleteOption, TEditableField, TFormElement } from './form.type';
-
-// Cars
-export interface ICars {
-  getCreateCarUrl: () => string;
-  getCars: () => Promise<[TCar[], null] | [null, ErrorCustom<Response>]>;
-  getCar: (id: string) => Promise<[TCar, null] | [null, ErrorCustom<Response>]>;
-  getManufacturers: () => Promise<[TCarManufacturer[], null] | [null, ErrorCustom<Response>]>;
-  getAllModels: () => Promise<[TCarModel[], null] | [null, ErrorCustom<Response>]>;
-  getManufacturerModels: (id: number) => Promise<[TCarModel[], null] | [null, ErrorCustom<Response>]>;
-  addCar: (data: TCarFormBody) => Promise<TResponse | null>;
-}
-
-export interface ICarsForm {
-  updateFormList: (list: TFormElement[], data: { name: string; value: TAutocompleteOption[] }) => TFormElement[];
-  getManufacturersOptions: (list: TCarManufacturer[]) => void;
-  getModelOptions: (list: TCarModel[]) => void;
-  getPreferencesFields: () => string[];
-  getAddCarBody: (form: HTMLFormElement, models: TCarModel[], roleId: number) => TCarFormBody | null;
-  getEditCarBody: (form: HTMLFormElement, models: TCarModel, roleId: number) => TCarFormBody | null;
-  getEditableFormList: (car: TCar, data: { manufacturer: TCarManufacturer; model: TCarModel }) => TFormElement[];
-}
-
-// Car
-export interface ICar extends TCar {
-  getAddTripUrl: () => string;
-  getEditCarUrl: () => string;
-  getActionButtons: () => TNavigationData[];
-  getImageData: () => StaticImageData;
-  getCarName: () => string;
-  getProperties: () => TProperty[];
-  getEditableFields: () => TEditableField[];
-}
+import type { TAutocompleteOption } from './form.type';
 
 export type TCar = {
   car_id: number;

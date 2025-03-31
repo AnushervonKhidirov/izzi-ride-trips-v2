@@ -1,4 +1,4 @@
-import type { TUser } from './auth.type';
+import type { TUser } from './user.type';
 
 export type TChatInfo = {
   id: number | string;
