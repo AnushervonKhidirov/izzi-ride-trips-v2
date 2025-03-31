@@ -1,9 +1,10 @@
+import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
+import type { ResponseWithError, TResponse } from '@type/common.type';
+import type { TUser } from '@type/user.type';
+
 import { Endpoint, Token } from '@constant/request';
 import { getCookies } from '@helper/cookies.helper';
-import { TUser } from '@type/auth.type';
-import { ResponseWithError, TResponse } from '@type/common.type';
-import { CustomError } from '@type/error.type';
-import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
+import { HttpError, SimpleError } from '@error/http.error';
 
 export class UserService {
   async getUser(cookieStore?: ReadonlyRequestCookies): ResponseWithError<TUser> {
@@ -24,18 +25,18 @@ export class UserService {
       });
 
       if (response.status !== 200) {
-        throw new CustomError(response.status, response.statusText);
+        throw new HttpError(response.status, response.statusText);
       }
 
       const responseBody = <TResponse<TUser>>await response.json();
       const user = responseBody.data;
 
-      if (!user) throw new Error('');
+      if (!user) throw new Error();
 
       return [user, null];
     } catch (err) {
-      if (err instanceof CustomError) return [null, err];
-      return [null, new CustomError(400, 'Bad Request')];
+      if (err instanceof HttpError) return [null, err];
+      return [null, new SimpleError()];
     }
   }
 }

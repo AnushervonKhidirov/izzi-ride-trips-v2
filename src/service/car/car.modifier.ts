@@ -1,4 +1,4 @@
-import type { TCar, ICar, TCarPreferences } from '@type/car.type';
+import type { TCar, TCarPreferences } from '@type/car.type';
 import type { TChip, TProperty } from '@type/common.type';
 import type { TEditableField } from '@type/form.type';
 
@@ -6,7 +6,7 @@ import { linkGenerator } from '@helper/link-generator.helper';
 import { Page } from '@constant/links';
 import carImage from '@public/images/car.png';
 
-export default class CarModifier implements ICar {
+export default class CarModifier {
   readonly car_id: number;
   readonly manufacturer: string;
   readonly model: string;

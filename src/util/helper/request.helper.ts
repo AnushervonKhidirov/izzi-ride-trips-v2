@@ -1,10 +1,9 @@
 import type { ResponseWithError } from '@type/common.type';
 import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
-import { CustomError } from '@type/error.type';
 
 import { Token } from '@constant/request';
 import { addCookies, getCookies } from '@helper/cookies.helper';
-
+import { HttpError, SimpleError } from '@error/http.error';
 import { AuthService } from '@service/auth/auth.service';
 
 export const requestWithRefresh = async <T>(
@@ -49,7 +48,7 @@ export const requestWithRefresh = async <T>(
 
     return [response, null];
   } catch (err) {
-    if (err instanceof CustomError) return [null, err];
-    return [null, new CustomError(400, 'Bad Request')];
+    if (err instanceof HttpError) return [null, err];
+    return [null, new SimpleError()];
   }
 };

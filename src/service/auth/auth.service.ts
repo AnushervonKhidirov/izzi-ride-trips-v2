@@ -1,7 +1,8 @@
+import type { TLogInData, TTokens } from '@type/auth.type';
+import type { ResponseWithError, TResponse } from '@type/common.type';
+
 import { Endpoint } from '@constant/request';
-import { TLogInData, TTokens } from '@type/auth.type';
-import { ResponseWithError, TResponse } from '@type/common.type';
-import { CustomError } from '@type/error.type';
+import { HttpError, SimpleError } from '@error/http.error';
 
 export class AuthService {
   async logIn(data: TLogInData): ResponseWithError<TTokens> {
@@ -15,17 +16,17 @@ export class AuthService {
       });
 
       if (response.status !== 200) {
-        throw new CustomError(response.status, response.statusText);
+        throw new HttpError(response.status, response.statusText);
       }
 
       const responseBody = <TResponse<TTokens>>await response.json();
       const tokens = responseBody.data;
-      if (!tokens) throw new Error('');
+      if (!tokens) throw new Error();
 
       return [tokens, null];
     } catch (err) {
-      if (err instanceof CustomError) return [null, err];
-      return [null, new CustomError(400, 'Bad Request')];
+      if (err instanceof HttpError) return [null, err];
+      return [null, new SimpleError()];
     }
   }
 
@@ -40,7 +41,7 @@ export class AuthService {
       });
 
       if (response.status !== 200) {
-        throw new CustomError(response.status, response.statusText);
+        throw new HttpError(response.status, response.statusText);
       }
 
       const responseBody = <TResponse<TTokens>>await response.json();
@@ -49,8 +50,8 @@ export class AuthService {
 
       return [tokens, null];
     } catch (err) {
-      if (err instanceof CustomError) return [null, err];
-      return [null, new CustomError(400, 'Bad Request')];
+      if (err instanceof HttpError) return [null, err];
+      return [null, new SimpleError()];
     }
   }
 }

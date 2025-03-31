@@ -1,6 +1,6 @@
 import type { ResponseWithError, TResponse } from '@type/common.type';
 import type { TCar } from '@type/car.type';
-import { CustomError } from '@type/error.type';
+import { HttpError, SimpleError } from '@error/http.error';
 import { Endpoint } from '@constant/request';
 import { getCookies } from '@helper/cookies.helper';
 
@@ -18,17 +18,17 @@ export class CarService {
       });
 
       if (response.status !== 200) {
-        throw new CustomError(response.status, response.statusText);
+        throw new HttpError(response.status, response.statusText);
       }
 
       const responseBody = <TResponse<TCar[]>>await response.json();
-      const tokens = responseBody.data;
-      if (!tokens) throw new Error('');
+      const cars = responseBody.data;
+      if (!cars) throw new Error();
 
-      return [tokens, null];
+      return [cars, null];
     } catch (err) {
-      if (err instanceof CustomError) return [null, err];
-      return [null, new CustomError(400, 'Bad Request')];
+      if (err instanceof HttpError) return [null, err];
+      return [null, new SimpleError()];
     }
   }
 }
