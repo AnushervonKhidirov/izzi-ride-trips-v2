@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 import localFont from 'next/font/local';
+import AlertProvider from '@common/alert/provider';
 
 import './globals.css';
 
@@ -115,7 +116,11 @@ const roboto = localFont({
 const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <AlertProvider>
+          {children}
+        </AlertProvider>
+      </body>
     </html>
   );
 };

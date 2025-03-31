@@ -10,11 +10,14 @@ import { addCookies } from '@helper/cookies.helper';
 import { FormControl, InputLabel, OutlinedInput } from '@mui/material';
 import { PasswordInput } from '@common/input/input';
 import { AuthService } from '@service/auth/auth.service';
+import { useSnackbar } from 'notistack';
+import Alert from '@common/alert/alert';
 
 const LogIn = () => {
   const authService = new AuthService();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -29,7 +32,9 @@ const LogIn = () => {
     setLoading(false);
 
     if (err) {
-      alert(err.error);
+      enqueueSnackbar(<Alert status={err.status} title={err.error} message={err.message} />, {
+        variant: 'error',
+      });
     } else {
       addCookies(tokens);
       router.push('/');
